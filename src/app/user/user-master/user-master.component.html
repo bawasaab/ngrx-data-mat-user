@@ -1,0 +1,52 @@
+<p>user-master works!</p>
+<div class="example-container">
+  <div class="form-container">
+    <form [formGroup]="loginForm" (submit)="submit()">
+      <input *ngIf="mode == 'edit'" type="hidden" formControlName="id">
+      <p>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> first_name
+          </mat-label>
+          <input matInput formControlName="first_name" required>
+          <mat-error *ngIf="loginForm.controls['first_name'].touched && loginForm.controls['first_name'].invalid">
+            <span *ngIf="loginForm.controls['first_name'].errors?.['required']">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> last_name
+          </mat-label>
+          <input matInput formControlName="last_name" required>
+          <mat-error *ngIf="loginForm.controls['last_name'].touched && loginForm.controls['last_name'].invalid">
+            <span *ngIf="loginForm.controls['last_name'].errors?.['required']">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> E-mail
+          </mat-label>
+          <input matInput formControlName="email" required>
+          <mat-error *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
+            <span *ngIf="loginForm.controls['email'].errors?.['required']">This field is mandatory.</span>
+            <span *ngIf="loginForm.controls['email'].errors?.['pattern']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Password
+          </mat-label>
+          <input matInput formControlName="password" type="password">
+          <mat-error *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+            <span *ngIf="loginForm.controls['password'].errors?.['required']">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </p>
+    </form>
+  </div>
+</div>
